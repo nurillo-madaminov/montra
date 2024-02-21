@@ -3,10 +3,10 @@ import TopNavigation from "../components/TopNavigation.vue";
 </script>
 
 <template>
-    <div>
+    <div class="px-[20px]">
         <top-navigation 
         title="Sign Up"
-        hasBackButton="true"
+        :hasBackButton="false"
         ></top-navigation>        
     </div>
 </template>
