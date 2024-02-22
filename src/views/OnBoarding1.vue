@@ -1,63 +1,88 @@
 <script setup>
 import LargeButton from '@/components/LargeButton.vue'
-import { onMounted, ref } from 'vue'
-const slider = ref(null)
-const pageTitle = ref('Gain total control of your money')
-const pageText = ref('Become your own money manager and make every cent count')
+import { computed, ref, watch } from 'vue'
 
-onMounted(() => {
-  slider.value.onscroll = function () {
-    if (slider.value.scrollLeft >= 312 && slider.value.scrollLeft <= 623) {
-      pageTitle.value = 'Know where your money goes'
-      pageText.value = 'Track your transaction easily, with categories and financial report'
-    
-    } 
-    else if (slider.value.scrollLeft >= 624) {
-      pageTitle.value = 'Planning ahead'
-      pageText.value = 'Setup your budget for each category so you in control'
-    } 
-    else {
-      pageTitle.value = 'Gain total control of your money'
-      pageText.value = 'Become your own money manager and make every cent count'
-    }
+const index = ref(0)
+const slider = ref(null)
+const slideWidth = 312
+
+const boardText = computed(() => {
+  var title = ''
+  var description = ''
+  switch (index.value) {
+    case 0:
+      title = 'Gain total control of your money'
+      description = 'Become your own money manager and make every cent count'
+      break
+
+    case 1:
+      title = 'Know where your money goes'
+      description = 'Track your transaction easily, with categories financial report'
+      break
+
+    case 2:
+      title = 'Planning ahead'
+      description = 'Setup your budget for each category so you in control'
   }
+  return { title, description }
 })
+
+function handleBoardScroll(event) {
+  index.value = event.target.scrollLeft / slideWidth
+}
+
+watch(index, () => {
+  slideTo()
+})
+
+const slideTo = () => {
+  slider.value.scrollLeft = slideWidth * index.value
+}
 </script>
 <template>
-  <div class="h-screen px-[20px] flex flex-col items-center justify-evenly">
+  <div class="flex flex-col items-center h-screen px-5 justify-evenly">
     <div
-      class="slider flex items-center overflow-x-scroll w-[312px] h-[312px] snap-x snap-mandatory scroll-smooth"
+      class="no-scrollbar flex items-center overflow-x-scroll w-[312px] h-[312px] snap-x snap-mandatory scroll-smooth"
+      @scrollend="handleBoardScroll"
       ref="slider"
     >
       <img
         src="../assets/img/Illustration-1.png"
         alt=""
-        class="shrink-0 w-full snap-start"
+        class="w-full shrink-0 snap-start"
         draggable="false"
       />
       <img
         src="../assets/img/Illustration-2.png"
         alt=""
-        class="shrink-0 w-full snap-start"
+        class="w-full shrink-0 snap-start"
         draggable="false"
       />
       <img
         src="../assets/img/Illustration-3.png"
         alt=""
-        class="shrink-0 w-full snap-start"
+        class="w-full shrink-0 snap-start"
         draggable="false"
       />
     </div>
-    <div class="space-y-4">
-      <h1 class="text-title-1 font-bold text-center">{{ pageTitle }}</h1>
-      <p class="text-regular-1 text-light-20 text-center">
-        {{ pageText }}
-      </p>
-    </div>
-    <div class="flex gap-4 items-center">
-      <div class="w-4 h-4 bg-violet-100 rounded-full"></div>
-      <div class="w-2 h-2 bg-light-20 rounded-full"></div>
-      <div class="w-2 h-2 bg-light-20 rounded-full"></div>
+
+    <Transition name="fade" mode="out-in">
+      <div :key="index" class="space-y-4">
+        <h1 class="font-bold text-center text-title-1">{{ boardText.title }}</h1>
+        <p class="text-center text-regular-1 text-light-20">
+          {{ boardText.description }}
+        </p>
+      </div>
+    </Transition>
+
+    <div class="flex items-center gap-4">
+      <div
+        class="w-2 h-2 transition-all duration-300 rounded-full"
+        v-for="i in 3"
+        @click="index = i - 1"
+        :key="i"
+        :class="index === i - 1 ? 'bg-violet-100 w-4 h-4' : 'bg-light-20'"
+      ></div>
     </div>
     <div class="w-full space-y-4">
       <large-button title="Sign Up" type="primary" @click="$router.push('/sign-up')"></large-button>
@@ -67,7 +92,13 @@ onMounted(() => {
 </template>
 
 <style>
-.slider {
-  scrollbar-width: none;
+.fade-enter-active,
+.fade-leave-active {
+  @apply transition duration-300;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  @apply opacity-0 scale-95 translate-y-2;
 }
 </style>
