@@ -1,5 +1,5 @@
 <script setup>
-import LargeButton from '@/components/LargeButton.vue'
+import MButton from '@/components/common/MButton.vue'
 import { computed, ref, watch } from 'vue'
 
 const index = ref(0)
@@ -85,8 +85,8 @@ const slideTo = () => {
       ></div>
     </div>
     <div class="w-full space-y-4">
-      <large-button title="Sign Up" type="primary" @click="$router.push('/sign-up')"></large-button>
-      <large-button title="Log in" type="secondary"></large-button>
+      <MButton title="Sign Up" type="primary" @click="$router.push('/sign-up')"></MButton>
+      <MButton title="Log in" type="secondary"></MButton>
     </div>
   </div>
 </template>
