@@ -7,6 +7,10 @@
   src: url(./Inter/static/Inter-Medium.ttf);
 }
 
+body {
+  font-family: Inter;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

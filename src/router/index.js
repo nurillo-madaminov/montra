@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import LaunchScreen from '../views/onboarding/LaunchScreen.vue'
 import Onboarding1 from '../views/onboarding/OnBoarding1.vue'
 import Onboarding2 from '../views/onboarding/OnBoarding2.vue'
+import SetupPinView from '@/views/onboarding/SetupPinView.vue'
 
 const routes = [
   {
@@ -18,6 +20,11 @@ const routes = [
     path: '/sign-up',
     name: 'signUp',
     component: Onboarding2
+  },
+  {
+    path: '/setup-pin',
+    name: 'setipPin',
+    component: SetupPinView
   }
 ]
 

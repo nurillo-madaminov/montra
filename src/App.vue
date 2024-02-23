@@ -6,7 +6,7 @@ import NavigationSidebar from '@/components/test/NavigationSidebar.vue'
   <Teleport to="body">
     <NavigationSidebar />
   </Teleport>
-  <div class="min-h-screen">
+  <div class="h-screen">
     <RouterView></RouterView>
   </div>
 </template>
