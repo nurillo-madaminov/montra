@@ -47,19 +47,19 @@ const slideTo = () => {
       ref="slider"
     >
       <img
-        src="../assets/img/Illustration-1.png"
+        src="@/assets/img/Illustration-1.png"
         alt=""
         class="w-full shrink-0 snap-start"
         draggable="false"
       />
       <img
-        src="../assets/img/Illustration-2.png"
+        src="@/assets/img/Illustration-2.png"
         alt=""
         class="w-full shrink-0 snap-start"
         draggable="false"
       />
       <img
-        src="../assets/img/Illustration-3.png"
+        src="@/assets/img/Illustration-3.png"
         alt=""
         class="w-full shrink-0 snap-start"
         draggable="false"
