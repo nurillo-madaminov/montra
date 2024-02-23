@@ -23,7 +23,7 @@ const isOpen = ref(false)
       </div>
     </Transition>
 
-    <button :key="isOpen" class="bg-violet-20 p-3" @click="isOpen = !isOpen">☰</button>
+    <button :key="isOpen" class="bg-violet-20 p-3 opacity-10 hover:opacity-100 transition-all" @click="isOpen = !isOpen">☰</button>
   </div>
 </template>
 
