@@ -40,9 +40,9 @@ const slideTo = () => {
 }
 </script>
 <template>
-  <div class="flex flex-col items-center h-screen px-5 justify-evenly">
+  <div class="flex h-screen flex-col items-center justify-evenly px-default">
     <div
-      class="no-scrollbar flex items-center overflow-x-scroll w-[312px] h-[312px] snap-x snap-mandatory scroll-smooth"
+      class="no-scrollbar flex h-[312px] w-[312px] snap-x snap-mandatory items-center overflow-x-scroll scroll-smooth"
       @scrollend="handleBoardScroll"
       ref="slider"
     >
@@ -68,7 +68,7 @@ const slideTo = () => {
 
     <Transition name="fade" mode="out-in">
       <div :key="index" class="space-y-4">
-        <h1 class="font-bold text-center text-title-1">{{ boardText.title }}</h1>
+        <h1 class="text-center text-title-1 font-bold">{{ boardText.title }}</h1>
         <p class="text-center text-regular-1 text-light-20">
           {{ boardText.description }}
         </p>
@@ -77,11 +77,11 @@ const slideTo = () => {
 
     <div class="flex items-center gap-4">
       <div
-        class="w-2 h-2 transition-all duration-300 rounded-full"
+        class="h-2 w-2 rounded-full transition-all duration-300"
         v-for="i in 3"
         @click="index = i - 1"
         :key="i"
-        :class="index === i - 1 ? 'bg-violet-100 w-4 h-4' : 'bg-light-20'"
+        :class="index === i - 1 ? 'h-4 w-4 bg-violet-100' : 'bg-light-20'"
       ></div>
     </div>
     <div class="w-full space-y-4">
@@ -99,6 +99,6 @@ const slideTo = () => {
 
 .fade-enter-from,
 .fade-leave-to {
-  @apply opacity-0 scale-95 translate-y-2;
+  @apply translate-y-2 scale-95 opacity-0;
 }
 </style>

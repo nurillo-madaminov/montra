@@ -4,7 +4,7 @@ const props = defineProps(['title', 'type'])
 
 <template>
   <div
-    class="w-full h-[56px] rounded-2xl flex justify-center items-center text-title-3 font-bold"
+    class="flex h-[56px] w-full items-center justify-center rounded-2xl text-title-3 font-bold"
     :class="{
       'bg-violet-100 text-light-80': props.type === 'primary',
       'bg-violet-20 text-violet-100': props.type !== 'primary'

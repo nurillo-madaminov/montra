@@ -4,8 +4,8 @@ import OTPInput from '@/components/common/form/OTPInput.vue'
 </script>
 
 <template>
-  <div class="px-[20px]">
-    <top-navigation title="Sign Up" :hasBackButton="false"></top-navigation>
+  <div class="px-default">
+    <top-navigation title="Sign Up"></top-navigation>
 
     <OTPInput />
   </div>
