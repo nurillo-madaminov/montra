@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "inter";
-    src: url(./Inter/static/Inter-Medium.ttf);
+  font-family: 'inter';
+  src: url(./Inter/static/Inter-Medium.ttf);
+}
+
+body {
+  font-family: Inter;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -63,6 +63,11 @@ export default {
       small: ['13px', '16px'],
       tiny: ['12px', '12px']
     },
+    extend: {
+      padding: {
+        "default" : "20px"
+      }
+    }
   },
   plugins: []
 }
