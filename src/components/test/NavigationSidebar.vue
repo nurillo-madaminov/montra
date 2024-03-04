@@ -3,9 +3,13 @@ import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 
 const router = useRouter()
-
 const routes = router.options.routes
 const isOpen = ref(false)
+
+const changeRoute = (to) => {
+  router.push(to)
+  isOpen.value = false
+}
 </script>
 
 <template>
@@ -15,7 +19,7 @@ const isOpen = ref(false)
         <button
           class="bg-violet-40 px-3 py-4 transition-colors hover:bg-violet-60"
           :key="route.name"
-         @click="router.push({ name: route.name })"
+          @click="changeRoute(route)"
           v-for="route in routes"
         >
           {{ route.component.__name }}
@@ -23,7 +27,13 @@ const isOpen = ref(false)
       </div>
     </Transition>
 
-    <button :key="isOpen" class="bg-violet-20 p-3 opacity-10 hover:opacity-100 transition-all" @click="isOpen = !isOpen">☰</button>
+    <button
+      :key="isOpen"
+      class="bg-violet-20 p-3 opacity-10 transition-all hover:opacity-100"
+      @click="isOpen = !isOpen"
+    >
+      ☰
+    </button>
   </div>
 </template>
 
