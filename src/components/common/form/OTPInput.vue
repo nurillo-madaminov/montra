@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { reactive } from 'vue'
 const otpData = reactive()
 </script>
@@ -10,4 +10,4 @@ const otpData = reactive()
       <input type="text" id="otp1" class="w-2" />
     </div>
   </div>
-</template>
+</template> -->

@@ -15,7 +15,7 @@ const isOpen = ref(false)
         <button
           class="bg-violet-40 px-3 py-4 transition-colors hover:bg-violet-60"
           :key="route.name"
-          @click="router.push({ name: route.name })"
+         @click="router.push({ name: route.name })"
           v-for="route in routes"
         >
           {{ route.component.__name }}
